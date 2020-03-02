@@ -8,10 +8,10 @@ exports.add = async (req, res) => {
     const { title, author, email } = req.fields;
     const file = req.files.file;
 
-    const patternTitle = new RegExp(/(([A-z]|[0-9]|\s|\.|\,)*)/, 'g');
+    const patternTitle = new RegExp(/(([A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]|[0-9]|\s|\.|\,)*)/, 'g');
     const titleMatched = title.match(patternTitle).join('');
 
-    const patternAuthor = new RegExp(/(([A-z]|\s|\.)*)/, 'g');
+    const patternAuthor = new RegExp(/(([A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]|\s|\.)*)/, 'g');
     const authorMatched = author.match(patternAuthor).join('');
 
     const patternEmail = new RegExp(/([A-z]|[0-9]|\-|\_|\+|\.|\,)+@+([A-z]|[0-9]|\-|\_|)+\.([A-z])+/, 'g');

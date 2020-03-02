@@ -2,10 +2,10 @@ POST http://localhost:8000/api/photos
 content-type: application/json
 
 {
-    "emai": "123@123.qwe",
+    "email": "123@123.qwe",
     "author": "Bob",
     "title": "Title-photo",
-    "file": "qwer.txt",
+    "file": "qwer.pdf",
     
 }
 

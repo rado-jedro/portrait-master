@@ -1,4 +1,5 @@
 const Photo = require('../models/photo.model');
+const path = require('path')
 
 /****** SUBMIT PHOTO ********/
 
@@ -28,7 +29,7 @@ exports.add = async (req, res) => {
       // if fields are not empty...
 
       const ext = path.extname(file);
-      if (ext === 'png' || ext === 'gif' || ext === 'jpg' || ext === 'jpeg') {
+      if (ext === '.png' || ext === '.gif' || ext === '.jpg' || ext === '.jpeg') {
         const newPhoto = new Photo({
           title,
           author,

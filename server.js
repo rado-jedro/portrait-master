@@ -30,11 +30,6 @@ app.use(formidable({ uploadDir: './public/uploads/' }, [{
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(function(req, res, next) {
-  const ip = req.clientIp;
-  next();
-});
-
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '/client/build')));

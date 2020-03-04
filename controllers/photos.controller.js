@@ -79,15 +79,13 @@ exports.vote = async (req, res) => {
           user: req.clientIp,
           votes: req.params.id
         });
-        if (userVotedPhotos)
-          res.status(500).json({
-            message: 'Already voted for selected photo'
-          });
+        if (userVotedPhotos) res.status(500).json(err);
         else {
-          const newVoter = new Voter({ user: req.clientIp });
-          newVoter.votes.push(req.params.id);
-          await newVoter.save();
-          res.json({ message: 'New IP and photo have been added' });
+          await Voter.updateOne(
+            { user: req.clientIp },
+            { $push: { votes: req.params.id } }
+          );
+          res.json({ message: 'IP updated with new photo' });
         }
       }
       photoToUpdate.votes++;
